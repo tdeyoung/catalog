@@ -1,0 +1,54 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_area :title %>
+  </div>
+  <div class="field">
+    <%= f.label :composer_fname %><br>
+    <%= f.text_area :composer_fname %>
+  </div>
+  <div class="field">
+    <%= f.label :composer_lname %><br>
+    <%= f.text_area :composer_lname %>
+  </div>
+  <div class="field">
+    <%= f.label :arranger %><br>
+    <%= f.text_area :arranger %>
+  </div>
+  <div class="field">
+    <%= f.label :publisher %><br>
+    <%= f.text_area :publisher %>
+  </div>
+  <div class="field">
+    <%= f.label :ensemble %><br>
+    <%= f.select :ensemble, options_for_select(@ensembles.collect {|s| [s[0].humanize, s[0]]},
+        selected: @item.ensemble), {} %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br>
+    <%= f.text_area :level %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_area :location %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

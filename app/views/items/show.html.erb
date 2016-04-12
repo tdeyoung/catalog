@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Composer fname:</strong>
+  <%= @item.composer_fname %>
+</p>
+
+<p>
+  <strong>Composer lname:</strong>
+  <%= @item.composer_lname %>
+</p>
+
+<p>
+  <strong>Arranger:</strong>
+  <%= @item.arranger %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @item.publisher %>
+</p>
+
+<p>
+  <strong>Ensemble:</strong>
+  <%= @item.ensemble %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @item.level %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @item.location %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @item.comments %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

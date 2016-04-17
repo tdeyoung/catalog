@@ -19,4 +19,9 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_select "title", "About | GRPS Music Catalog"
   end
 
+  test "should get contact" do
+    get :contact
+    assert_response :success
+    assert_select "title", "Contact | GRPS Music Catalog"
+  end
 end

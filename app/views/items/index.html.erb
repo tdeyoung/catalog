@@ -3,7 +3,7 @@
 <h1>Listing Items</h1>
 
 <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search for music" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search for a music title" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 

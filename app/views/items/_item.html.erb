@@ -1,0 +1,24 @@
+<% if item == @current_item %>
+	<div id="current_item" class="entry">
+<% else %>
+	<div class="item">
+<% end %>
+
+		<div class="item_title"> <%= item.title %></div>
+		<div class="item_info">
+			<span class="composer"> <%= item.composer_fname %> </span>
+			<span class="composer"> <%= item.composer_lname %> </span>
+			<span class="arranger"> <%= item.arranger %> </span>
+			<span class="publisher"> <%= item.publisher %> </span>
+			<span class="ensemble"> <%= item.ensemble %> </span>
+			<span class="level"> <%= item.level %> </span>
+			<span class="location"> <%= item.location %> </span>
+			<span class="user"> <%= item.user %> </span>
+		</div>
+		<div class="item_comments"> <%= item.comments %> </div>
+		<div class="">
+			<div class="actions">
+				<%= link_to 'Show', item %>
+				<%= link_to 'Edit', edit_item_path(item), remote:true %>
+			</div>
+		</div>

@@ -21,6 +21,7 @@
       <th>Level</th>
       <th>Location</th>
       <th>Comments</th>
+      <th>Teacher</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,6 +38,7 @@
         <td><%= item.level %></td>
         <td><%= item.location %></td>
         <td><%= item.comments %></td>
+        <td><%= item.user %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

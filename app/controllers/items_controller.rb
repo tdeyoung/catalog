@@ -31,6 +31,8 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    user = User.find(item_params[:user_id])
+    @item.build_user(:id => user.id)
 
     respond_to do |format|
       if @item.save
@@ -79,6 +81,6 @@ class ItemsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :composer_fname, :composer_lname, :arranger, :publisher, :ensemble, :level, :location, :comments)
+      params.require(:item).permit(:title, :composer_fname, :composer_lname, :arranger, :publisher, :ensemble, :level, :location, :comments, :user_id)
     end
 end

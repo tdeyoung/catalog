@@ -7,6 +7,11 @@
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 
+<% if @posts.present? %>
+  <%= render @posts %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>
 
 
 <table>

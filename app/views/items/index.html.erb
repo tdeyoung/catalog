@@ -7,11 +7,7 @@
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<% if @items.present? %>
-  <%= render @items %>
-<% else %>
-  <p>There are no pieces containing the term(s) <%= params[:search] %>.</p>
-<% end %>
+
 
 <table>
   <thead>

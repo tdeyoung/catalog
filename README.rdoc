@@ -44,3 +44,17 @@ comments:text
 -composer_lname must be present
 -ensemble must be valid
 -location must be present
+
+    {
+        "id": 3,
+        "title": "This is the day",
+        "composer_fname": "public",
+        "composer_lname": "domain",
+        "arranger": "",
+        "publisher": "realgoodmusic publisher",
+        "ensemble": "general_music",
+        "level": "elementary music",
+        "location": "Argus Music School",
+        "comments": "",
+        "url": "http://localhost:3000/items/3.json"
+    }

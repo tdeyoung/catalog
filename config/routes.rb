@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  # get 'users/show'
-  get 'users/index'
-  get 'items/index'
-
+  
   root                     'static_pages#home'
   get 'help'            => 'static_pages#help'
   get 'about'           => 'static_pages#about'
   get 'contact'         => 'static_pages#contact'
   get 'signup'          => 'users#new'
   get 'users/index'     => 'users#index'
+  get 'users/new'       => 'users#new'
+  get 'users/show'      => 'users#show'
+  get 'items/index'     => 'items#index'
+  get 'items/new'       => 'items#new'
+  get 'items/edit'      => 'items#edit'
+  get 'items/show'      => 'items#show'
+
+
   # get 'item'      => 'items#index'
   # get 'user'      => 'users#index'
 

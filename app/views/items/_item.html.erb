@@ -19,6 +19,8 @@
 		<div class="">
 			<div class="actions">
 				<%= link_to 'Show', item %>
-				<%= link_to 'Edit', edit_item_path(item) %>
-			</div>
+				<%= link_to 'Edit', edit_item_path(item), remote: true %>
+<!-- 				<%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+ -->				<%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, remote:true %>
+ 			</div>
 		</div>

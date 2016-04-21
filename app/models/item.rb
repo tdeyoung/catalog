@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :user, -> {order "title asc"}
 	validates :title, presence: true, length: {minimum: 3, maximum: 80}
 	validates :composer_lname, presence: true
 	validates :location, presence: true

@@ -3,6 +3,11 @@ class ItemsController < ApplicationController
 
   before_action :set_ensembles
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :all_items, only: [:index, :create, :destroy, :update]
+
+def all_items
+  @items = Item.all
+end
 
   # GET /items
   # GET /items.json
@@ -37,7 +42,6 @@ class ItemsController < ApplicationController
     # @item.build_user(:id => user.id)
     @item.save!
     @current_item = @item
-    @items = Item.all
   end
 
    # def create
@@ -78,26 +82,35 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    @item.update!(item_params)
   end
+
+  # def update
+  #   respond_to do |format|
+  #     if @item.update(item_params)
+  #       format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @item }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @item.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /items/1
   # DELETE /items/1.json
+
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @item.destroy!
   end
+  
+  # def destroy
+  #   @item.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

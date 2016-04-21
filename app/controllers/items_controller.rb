@@ -36,32 +36,32 @@ end
 
   # POST /items
   # POST /items.json
-  def create
-    @item = Item.new(item_params)
-    # user = User.find(item_params[:user_id])
-    # @item.build_user(:id => user.id)
-    @item.save!
-    @current_item = @item
-  end
+  # def create
+  #   @item = Item.new(item_params)
+  #   user = User.find(item_params[:user_id])
+  #   @item.build_user(:id => user.id)
+  #   @item.save!
+  #   @current_item = @item
+  # end
 
-   # def create
-   #   if params[:cancel] == "Cancel"
-   #       respond_to do |format|
-   #           format.js { render action: 'cancel'}
-   #       end
-   #   else
-   #       @item = Item.new(item_params)
-   #       user = User.find(item_params[:user_id])
-   #       @item.build_user(:id  => user.id)
-   #       if @item.save
-   #           @current_item = @item
-   #       else
-   #           respond_to do |format|
-   #               format.js { render action: 'new' }
-   #            end 
-   #        end
-   #    end 
-   #  end
+   def create
+     if params[:cancel] == "Cancel"
+         respond_to do |format|
+             format.js { render action: 'cancel'}
+         end
+     else
+         @item = Item.new(item_params)
+         user = User.find(item_params[:user_id])
+         @item.build_user(:id  => user.id)
+         if @item.save
+             @current_item = @item
+         else
+             respond_to do |format|
+                 format.js { render action: 'new' }
+              end 
+          end
+      end 
+    end
 
   # def create
   #   @item = Item.new(item_params)
@@ -82,8 +82,23 @@ end
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    @item.update!(item_params)
+    if params[:cancel] == "Cancel"
+      respond_to do |format|
+        format.js {render action: 'cancel' }
+      end
+    else
+        if !@item.update(item_params)
+          respond_to do |format|
+            format.js {render action: 'edit' }
+          end
+        end
+    end
   end
+
+
+  # def update
+  #   @item.update!(item_params)
+  # end
 
   # def update
   #   respond_to do |format|

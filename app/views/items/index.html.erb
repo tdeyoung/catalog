@@ -1,18 +1,20 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'New Item', new_item_path, remote: true %>
 
-<h1>Listing Items</h1>
-
-<%= form_tag(items_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search for a music title" %>
-  <%= submit_tag "Search", :name => nil %>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
 <% end %>
 
-<% if @items.present? %>
-  <%= render @items %>
-<% else %>
-  <p>There are no items containing the term(s) <%= params[:search] %>.</p>
-<% end %>
+<h1>Music List</h1>
 
+  <div id="items">
+    <%= render @items %>
+  </div>
+
+<div id="item-form" style="display:none;"></div>
+
+<br>
+
+<%= link_to 'New Item', new_item_path, remote: true %>
 
 <!-- <table>
   <thead>
@@ -52,6 +54,4 @@
   </tbody>
 </table> -->
 
-<br>
 
-<%= link_to 'New Item', new_item_path %>

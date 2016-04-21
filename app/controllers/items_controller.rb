@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  respond_to :html, :js
+
   before_action :set_ensembles
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -33,17 +35,45 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     # user = User.find(item_params[:user_id])
     # @item.build_user(:id => user.id)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    @item.save!
+    @current_item = @item
+    @items = Item.all
   end
+
+   # def create
+   #   if params[:cancel] == "Cancel"
+   #       respond_to do |format|
+   #           format.js { render action: 'cancel'}
+   #       end
+   #   else
+   #       @item = Item.new(item_params)
+   #       user = User.find(item_params[:user_id])
+   #       @item.build_user(:id  => user.id)
+   #       if @item.save
+   #           @current_item = @item
+   #       else
+   #           respond_to do |format|
+   #               format.js { render action: 'new' }
+   #            end 
+   #        end
+   #    end 
+   #  end
+
+  # def create
+  #   @item = Item.new(item_params)
+  #   # user = User.find(item_params[:user_id])
+  #   # @item.build_user(:id => user.id)
+
+  #   respond_to do |format|
+  #     if @item.save
+  #       format.html { redirect_to @item, notice: 'Item was successfully created.' }
+  #       format.json { render :show, status: :created, location: @item }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @item.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json

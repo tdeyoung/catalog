@@ -51,8 +51,8 @@ end
          end
      else
          @item = Item.new(item_params)
-         # user = User.find(item_params[:user_id])
-         # @item.build_user(:id  => user.id)
+         user = User.find(item_params[:user_id])
+         @item.build_user(:id  => user.id)
          if @item.save
              @current_item = @item
          else

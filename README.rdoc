@@ -86,3 +86,14 @@ items_index GET    /items/index(.:format)    items#index
             PATCH  /users/:id(.:format)      users#update
             PUT    /users/:id(.:format)      users#update
             DELETE /users/:id(.:format)      users#destroy
+
+
+user_id code taken from the _form.html.erb partial, reuse to add user_id to item listing:
+
+      <div class="field">
+        <%= f.label :user_id %><br>
+        <%= f.select :user_id,
+            options_for_select(User.all.collect {|a| ["#{a.name}", a.id]},
+            selected: (@item.user ? @item.user.id : User.first.id)),
+            {} %>
+      </div> 

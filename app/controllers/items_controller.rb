@@ -14,9 +14,9 @@ end
   def index
     @items = Item.all
       if params[:search]
-        @items = Item.search(params[:search]).order("created_at DESC")
+        @items = Item.search(params[:search]).order("title ASC")
       else
-        @items = Item.all.order('created_at DESC')
+        @items = Item.all.order('title ASC')
       end
   end
 

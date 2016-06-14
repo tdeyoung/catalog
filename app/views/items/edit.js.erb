@@ -1,7 +1,7 @@
 $('#item-form').html("<%= j (render 'form') %>");
 $('#item-form').slideDown(350);
 setTimeout(function(){
-if((obj = document.getElementById("submitbutton")) && obj != null) {
-	window.scrollTo(0, obj.offsetTop);
+if((obj = document.getElementById("userfield")) && obj != null) {
+	window.scrollTo(0, obj.offsetTop - 60);
 	}
 }, 400);

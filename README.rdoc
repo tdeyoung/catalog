@@ -45,47 +45,14 @@ comments:text
 -ensemble must be valid
 -location must be present
 
-    {
-        "id": 3,
-        "title": "This is the day",
-        "composer_fname": "public",
-        "composer_lname": "domain",
-        "arranger": "",
-        "publisher": "realgoodmusic publisher",
-        "ensemble": "general_music",
-        "level": "elementary music",
-        "location": "Argus Music School",
-        "comments": "",
-        "url": "http://localhost:3000/items/3.json"
-    }
+Testing specifications for District:
 
-    Tims-MacBook-Pro:catalog timdeyoung$ rake routes
-     Prefix Verb   URI Pattern               Controller#Action
-  users_new GET    /users/new(.:format)      users#new
-users_index GET    /users/index(.:format)    users#index
-items_index GET    /items/index(.:format)    items#index
-       root GET    /                         static_pages#home
-       help GET    /help(.:format)           static_pages#help
-      about GET    /about(.:format)          static_pages#about
-    contact GET    /contact(.:format)        static_pages#contact
-     signup GET    /signup(.:format)         users#new
-      users GET    /users(.:format)          users#show
-      items GET    /items(.:format)          items#index
-            POST   /items(.:format)          items#create
-   new_item GET    /items/new(.:format)      items#new
-  edit_item GET    /items/:id/edit(.:format) items#edit
-       item GET    /items/:id(.:format)      items#show
-            PATCH  /items/:id(.:format)      items#update
-            PUT    /items/:id(.:format)      items#update
-            DELETE /items/:id(.:format)      items#destroy
-            GET    /users(.:format)          users#index
-            POST   /users(.:format)          users#create
-   new_user GET    /users/new(.:format)      users#new
-  edit_user GET    /users/:id/edit(.:format) users#edit
-       user GET    /users/:id(.:format)      users#show
-            PATCH  /users/:id(.:format)      users#update
-            PUT    /users/:id(.:format)      users#update
-            DELETE /users/:id(.:format)      users#destroy
+    t.text     "title"            -must be present, must be between 8 and 80 characters
+    t.text     "contact_person"   -must be present, must be between 3 and 50 characters
+    t.text     "contact_phone"    -must be present, must contain 10 digits
+    t.text     "contact_email"    -must be present, must be a valid email
+
+
 
 
 user_id code taken from the _form.html.erb partial, reuse to add user_id to item listing:
@@ -98,19 +65,3 @@ user_id code taken from the _form.html.erb partial, reuse to add user_id to item
             {} %>
       </div> 
 
-Error message when creating a new item:
-
-Started POST "/items" for ::1 at 2016-05-25 21:28:07 -0400
-Processing by ItemsController#create as JS
-  Parameters: {"utf8"=>"✓", "item"=>{"title"=>"Test Number One", "composer_fname"=>"Pete", "composer_lname"=>"Taylor", "arranger"=>"", "publisher"=>"Exxon Publishers INC.\r\n", "ensemble"=>"band", "level"=>"Elementary", "location"=>"Argus Music Conservatory", "comments"=>""}, "commit"=>"Create Item"}
-  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", nil]]
-Completed 404 Not Found in 15ms (ActiveRecord: 0.2ms)
-
-ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
-  app/controllers/items_controller.rb:54:in `create'
-
-
-  Rendered /Users/timdeyoung/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
-  Rendered /Users/timdeyoung/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.5ms)
-  Rendered /Users/timdeyoung/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.3ms)
-  Rendered /Users/timdeyoung/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (79.1ms)

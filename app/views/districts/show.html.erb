@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @district.title %>
+</p>
+
+<p>
+  <strong>Contact person:</strong>
+  <%= @district.contact_person %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @district.contact_phone %>
+</p>
+
+<p>
+  <strong>Contact email:</strong>
+  <%= @district.contact_email %>
+</p>
+
+<%= link_to 'Edit', edit_district_path(@district) %> |
+<%= link_to 'Back', districts_path %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'help'            => 'static_pages#help'
   get 'about'           => 'static_pages#about'
   get 'contact'         => 'static_pages#contact'
-  get 'signup'          => 'users#new'
+  get 'signup'          => 'districts#new'
   get 'users/index'     => 'users#index'
   get 'users/new'       => 'users#new'
   get 'users/show'      => 'users#show'

@@ -1,33 +1,22 @@
-<%= form_for(@district) do |f| %>
-  <% if @district.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@district.errors.count, "error") %> prohibited this district from being saved:</h2>
 
-      <ul>
-      <% @district.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_area :title %>
+    <%= f.text_area :title, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :contact_person %><br>
-    <%= f.text_area :contact_person %>
+    <%= f.text_area :contact_person, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :contact_phone %><br>
-    <%= f.text_area :contact_phone %>
+    <%= f.text_area :contact_phone, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :contact_email %><br>
-    <%= f.text_area :contact_email %>
+    <%= f.text_area :contact_email, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Set up my school district", class: "btn btn-primary" %>
   </div>
-<% end %>
+

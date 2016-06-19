@@ -103,3 +103,36 @@ ERROR MESSAGE FROM TOP TO GENERATED "NEW DISTRICT" _form.html.erb
   </div>
 
   <% end %>
+
+  REMOVING ASSOCIATION BETWEEN ITEM AND USER (code removed):  
+
+   - from items_controller.rb: (create method)
+    user = User.find(item_params[:user_id])
+    @item.build_user(:id  => user.id)
+
+    , :user_id - (def items_params)
+  - from item/show.html.erb
+    <p>
+    <strong>Teacher:</strong>
+    <%= (@item.user.try(:name) || "NA") %>
+    </p>
+
+  - from _item.html.erb
+    <span class="owner"> <%= (item.user.try(:name) || "NA") %> </span>
+
+  - from _form.html.erb
+    <div class="field" id = "userfield">
+      <%= f.label :user_id %><br>
+      <%= f.select :user_id,
+          options_for_select(User.all.collect {|u| ["#{u.name}", u.id]},
+          selected: (@item.user ? @item.user.id : User.first.id)),
+          {} %>
+    </div>  
+
+  -from models/item.rb
+    belongs_to :user
+
+  -from model/item.rb
+    has_many :items
+
+  -from       

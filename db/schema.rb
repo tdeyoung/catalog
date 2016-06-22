@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620160017) do
+ActiveRecord::Schema.define(version: 20160622125354) do
 
   create_table "districts", force: :cascade do |t|
     t.text     "title"
@@ -20,20 +20,21 @@ ActiveRecord::Schema.define(version: 20160620160017) do
     t.text     "contact_email"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "email_domain"
   end
 
   create_table "items", force: :cascade do |t|
     t.text     "title"
-    t.text     "composer_fname"
-    t.text     "composer_lname"
+    t.text     "composer_name"
     t.text     "arranger"
     t.text     "publisher"
     t.integer  "ensemble"
     t.text     "level"
     t.text     "location"
     t.text     "comments"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "status"
   end
 
   create_table "users", force: :cascade do |t|

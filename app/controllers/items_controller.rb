@@ -88,6 +88,6 @@ end
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :composer_fname, :composer_lname, :arranger, :publisher, :ensemble, :level, :location, :comments)
+      params.require(:item).permit(:title, :composer_name, :arranger, :publisher, :ensemble, :level, :location, :comments)
     end
 end

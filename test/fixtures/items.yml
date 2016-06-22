@@ -2,8 +2,7 @@
 
 one:
   title: MyText
-  composer_fname: MyText
-  composer_lname: MyText
+  composer_name: MyText
   arranger: MyText
   publisher: MyText
   ensemble: 1
@@ -13,8 +12,7 @@ one:
 
 two:
   title: MyText
-  composer_fname: MyText
-  composer_lname: MyText
+  composer_name: MyText
   arranger: MyText
   publisher: MyText
   ensemble: 1

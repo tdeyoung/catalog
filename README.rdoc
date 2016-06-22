@@ -136,3 +136,64 @@ ERROR MESSAGE FROM TOP TO GENERATED "NEW DISTRICT" _form.html.erb
     has_many :items
 
   -from       
+
+  CHANGING COMPOSER_FNAME AND COMPOSER_LNAME TO COMPOSER_NAME (code removed)
+
+  -from _form.html.erb
+
+    <div class="field">
+    <%= f.label :composer_fname %><br>
+    <%= f.text_area :composer_fname %>
+  </div>
+
+  -from _itme.html.erb
+
+        <span class="composer"> <%= item.composer_fname %> </span>
+
+  -from index.json.builder & show.json.builder :composer_fname
+
+  -from show.html.erb 
+
+    <p>
+    <strong>Composer fname:</strong>
+    <%= @item.composer_fname %>
+    </p>
+
+  -from 
+
+  <!-- <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Composer fname</th>
+      <th>Composer lname</th>
+      <th>Arranger</th>
+      <th>Publisher</th>
+      <th>Ensemble</th>
+      <th>Level</th>
+      <th>Location</th>
+      <th>Comments</th>
+      <th>Teacher</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.composer_fname %></td>
+        <td><%= item.composer_lname %></td>
+        <td><%= item.arranger %></td>
+        <td><%= item.publisher %></td>
+        <td><%= item.ensemble %></td>
+        <td><%= item.level %></td>
+        <td><%= item.location %></td>
+        <td><%= item.comments %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> -->

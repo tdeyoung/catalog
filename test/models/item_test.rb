@@ -3,7 +3,7 @@ require 'test_helper'
 class ItemTest < ActiveSupport::TestCase
 
 	def setup
-		@item = Item.create(title: "a title goes here", composer_fname: "fname", composer_lname: "lname", 
+		@item = Item.create(title: "a title goes here", composer_name: "name", 
 			ensemble: 1, location: "location")
 	end
 
@@ -26,8 +26,8 @@ class ItemTest < ActiveSupport::TestCase
 		assert_not @item.valid?
 	end
 
-	test "composer last name must be present" do
-		@item.composer_lname = "" 
+	test "composer name must be present" do
+		@item.composer_name = "" 
 		assert_not @item.valid?
 	end
 

@@ -1,0 +1,2 @@
+class ItemHistoriesController < ApplicationController
+end

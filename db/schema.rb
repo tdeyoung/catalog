@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622125354) do
+ActiveRecord::Schema.define(version: 20160623184949) do
 
   create_table "districts", force: :cascade do |t|
     t.text     "title"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20160622125354) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "email_domain"
+  end
+
+  create_table "item_histories", force: :cascade do |t|
+    t.boolean  "using"
+    t.date     "last_modified"
+    t.date     "added"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "items", force: :cascade do |t|

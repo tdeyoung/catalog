@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :item_histories
   resources :districts
   root                     'static_pages#home'
   get 'help'            => 'static_pages#help'

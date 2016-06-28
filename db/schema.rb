@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623184949) do
+ActiveRecord::Schema.define(version: 20160628191119) do
 
   create_table "districts", force: :cascade do |t|
     t.text     "title"
@@ -21,14 +21,6 @@ ActiveRecord::Schema.define(version: 20160623184949) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "email_domain"
-  end
-
-  create_table "item_histories", force: :cascade do |t|
-    t.boolean  "using"
-    t.date     "last_modified"
-    t.date     "added"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -66,9 +58,11 @@ ActiveRecord::Schema.define(version: 20160623184949) do
     t.string   "unconfirmed_email"
     t.boolean  "admin"
     t.text     "district"
+    t.integer  "district_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["district_id"], name: "index_users_on_district_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

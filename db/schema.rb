@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20160628191119) do
     t.string   "email_domain"
   end
 
+  create_table "item_histories", force: :cascade do |t|
+    t.boolean  "using"
+    t.date     "last_modified"
+    t.date     "added"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.text     "title"
     t.text     "composer_name"

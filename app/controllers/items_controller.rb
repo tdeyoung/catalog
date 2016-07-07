@@ -12,7 +12,7 @@ end
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    #@items = Item.all
       if params[:search]
         @items = Item.search(params[:search]).order("title ASC")
       else

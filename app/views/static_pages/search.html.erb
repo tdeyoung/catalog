@@ -5,7 +5,7 @@
 <h1>Search for Music</h1>
 
 <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search for a music title" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search for a music title", autofocus: true %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 

@@ -12,16 +12,18 @@ end
   # GET /items
   # GET /items.json
   def index
-    @items = Item.order("title ASC").paginate(page: params[:page]).per_page(2)
+    @items = Item.order("title ASC").paginate(page: params[:page]).per_page(4)
   end
 
   #GET /results
   def results
-      if params[:search]
-        @items = Item.search(params[:search]).order("title ASC")
-      else
-        @items = Item.all.order('title ASC')
-      end
+    if params[:search]
+      @items = Item.search(params[:search]).order("title ASC").paginate(page: params[:page]).per_page(4)
+    else
+      @items = Item.all.order('title ASC')
+    end
+
+    #@items = Item.search(params).paginate(:page => params[:page], :per_page => 2)
   end
 
   # GET /items/1

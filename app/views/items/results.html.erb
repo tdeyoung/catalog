@@ -5,6 +5,7 @@
 
 <h1>Search Results</h1>
 
+<%= will_paginate %>
 <% if @items.present? %>
   <div id="items">
     <%= render @items %>
@@ -14,6 +15,7 @@
   <p>Sorry, there are no music titles containing the term(s) <%= params[:search] %>.</p>
   <p><%= link_to "Search Again?",  search_path, class: "btn btn-danger"  %></p>
 <% end %>
+<%= will_paginate %>
 
 <div id="item-form" style="display:none;"></div>
 

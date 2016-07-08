@@ -3,26 +3,16 @@ Rails.application.routes.draw do
   resources :item_histories
   resources :districts
   resources :items
+
+  get 'search'          => 'items#search'
+  get 'results'         => 'items#results'
+
   resources :users
   root                     'static_pages#home'
 
   get 'help'            => 'static_pages#help'
   get 'about'           => 'static_pages#about'
   get 'contact'         => 'static_pages#contact'
-  get 'search'          => 'static_pages#search'
-  #get 'signup'          => 'districts#new'
-  #get 'users/index'     => 'users#index'
-  #get 'users/new'       => 'users#new'
-  #get 'users/show'      => 'users#show'
-  #get 'items/index'     => 'items#index'
-  #get 'items/new'       => 'items#new'
-  #get 'items/edit'      => 'items#edit'
-  #get 'items/show'      => 'items#show'
-
-
-  # get 'item'      => 'items#index'
-  # get 'user'      => 'users#index'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

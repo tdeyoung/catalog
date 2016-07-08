@@ -1,4 +1,4 @@
-<%= link_to 'New Item', new_item_path, remote: true %>
+<%= link_to 'New Item', new_item_path, class: "btn btn-primary", remote: true %>
 
 <% if notice %>
   <p id="notice"><%= notice %></p>
@@ -6,21 +6,19 @@
 
 <h1>Music List</h1>
 
-<% if @items.present? %>
-  <div id="items">
-    <%= render @items %>
-    <p><%= link_to "Search Again?",  search_path, class: "btn btn-danger"  %></p>
-  </div>
-<% else %>
-  <p>Sorry, there are no music titles containing the term(s) <%= params[:search] %>.</p>
-  <p><%= link_to "Search Again?",  search_path, class: "btn btn-danger"  %></p>
-<% end %>
+<%= will_paginate %>
+
+ <div id="items">
+ 	<%= render @items %>
+ </div>
+ 
+<%= will_paginate %>
 
 <div id="item-form" style="display:none;"></div>
 
 <br>
 
-<%= link_to 'New Item', new_item_path, remote: true %>
+<%= link_to 'New Item', new_item_path, class: "btn btn-primary", remote: true %>
 
 
 

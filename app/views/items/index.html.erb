@@ -9,10 +9,11 @@
 <% if @items.present? %>
   <div id="items">
     <%= render @items %>
+    <p><%= link_to "Search Again?",  search_path, class: "btn btn-danger"  %></p>
   </div>
 <% else %>
   <p>Sorry, there are no music titles containing the term(s) <%= params[:search] %>.</p>
-  <p><%= link_to "Search Again?",  search_path %></p>
+  <p><%= link_to "Search Again?",  search_path, class: "btn btn-danger"  %></p>
 <% end %>
 
 <div id="item-form" style="display:none;"></div>

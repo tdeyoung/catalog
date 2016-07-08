@@ -3,7 +3,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Search for Music</h1>
-<h2>this is the items search.html.erb</h2>
 
 <%= form_tag(results_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search for a title or composer", autofocus: true %>

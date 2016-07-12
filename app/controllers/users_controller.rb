@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		flash[:success] = "Welcome to the Music Catalog"
+  		flash[:success] = "Your account has been created succesfully"
+      session[:user_id] = @user.id
   		redirect_to @user
   	else
   		render 'new'

@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get 'about'           => 'static_pages#about'
   get 'contact'         => 'static_pages#contact'
 
+  get '/login', to: "logins#new"
+  post '/login', to: "logins#create"
+  get '/logout', to: "logins#destroy"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

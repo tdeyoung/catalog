@@ -5,8 +5,7 @@
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %><a class="close" data-dismiss="alert">&#215;</a></li>
-      
+      <li><%= msg %></li>
     <% end %>
     </ul>
   </div>

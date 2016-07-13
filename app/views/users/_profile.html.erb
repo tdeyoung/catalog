@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+    	<%= render 'layouts/messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+
+
+      <%= f.label :school_district %>
+      <%= f.text_field :district, class: 'form-control' %>
+
+      <%= f.label :admin %>
+      <%= f.check_box :admin, class: 'checkbox' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.submit "Update my profile", class: "btn btn-primary" %>
+     
+      <%= f.submit(@user.new_record? ? 'Sign-Up' : 'Edit profile', class: "btn btn-success") %>
+    <% end %>
+  </div>
+</div>

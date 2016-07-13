@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    #binding.pry
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Your profile has been updated succesfully"
@@ -41,6 +42,6 @@ end
   private
 
   	def user_params
-  		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  		params.require(:user).permit(:name, :email, :school_district, :admin, :password, :password_confirmation)
   	end
 end

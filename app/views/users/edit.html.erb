@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit your profile') %>
 <h1>Edit your profile</h1>
 
-<%= render 'form' %>
+<% if logged_in? %>
+
+	<%= render 'profile' %>
+
+<% else %>
+	<%= render 'form' %>
+
+<% end %>

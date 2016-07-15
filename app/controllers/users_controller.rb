@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
+
+
   def show
-  	@user = User.find(params[:id])
   end
 
  # GET /users
@@ -14,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
   
   def create
@@ -29,8 +30,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    #binding.pry
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Your profile has been updated succesfully"
       redirect_to users_path
@@ -42,6 +41,10 @@ end
   private
 
   	def user_params
-  		params.require(:user).permit(:name, :email, :school_district, :admin, :password, :password_confirmation)
+  		params.require(:user).permit(:name, :email, :district_id, :admin, :password, :password_confirmation)
   	end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

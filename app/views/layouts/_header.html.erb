@@ -10,7 +10,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <div id: "logo">
           <%= link_to "ScoreShare", root_path, id: "logo" %>
+          </div>
+
+          <% if logged_in? %>
+            <span class="panel">
+              <%= current_user.district.title %>
+            </span>
+          <% end %>
+
         </div> <!-- end div class="navbar-header" -->
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">

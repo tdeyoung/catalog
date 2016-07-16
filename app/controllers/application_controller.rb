@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
   	!!current_user
   end
+
+  def current_district
+    current_user.district.title
+  end
 end

@@ -14,7 +14,7 @@
           <%= link_to "ScoreShare", root_path, id: "logo" %>
           </div>
 
-          <% if logged_in? %>
+          <% if logged_in? and current_user.district_id != nil %>
             <span class="panel">
               <%= current_user.district.title %>
             </span>

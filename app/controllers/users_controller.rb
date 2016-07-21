@@ -8,7 +8,7 @@ class UsersController < ApplicationController
  # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(page: params[:page], per_page: 4)
+    @users = User.order("name ASC").paginate(page: params[:page], per_page: 4)
   end
   
   def new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   	if @user.save
   		flash[:success] = "Your account has been created succesfully"
       session[:user_id] = @user.id
-  		redirect_to @user
+  		redirect_to items_path
   	else
   		render 'new'
   	end

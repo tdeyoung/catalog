@@ -1,5 +1,6 @@
 class DistrictsController < ApplicationController
   before_action :set_district, only: [:show, :edit, :update, :destroy]
+  before_action :contact_person, only: [:create]
 
   # GET /districts
   # GET /districts.json
@@ -25,6 +26,8 @@ class DistrictsController < ApplicationController
   # POST /districts.json
   def create
     @district = District.new(district_params)
+    @district.contact_person = current_user.name
+    @district.contact_email = current_user.email
 
     respond_to do |format|
       if @district.save
@@ -65,6 +68,11 @@ class DistrictsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_district
       @district = District.find(params[:id])
+    end
+
+    def contact_person
+      current_user.name = contact_person
+      current_user.email = contact_email
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

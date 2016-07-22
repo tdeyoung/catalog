@@ -1,0 +1,26 @@
+<% if district == @current_district %>
+	<div id="current_item" class="item">
+<% else %>
+	<div class="item">
+<% end %>
+
+	<div class="row">
+
+		<div class="col-lg-6 well">
+			<h4><%= link_to district.title, district_path(district) %></h4>
+			<p>
+				<span> Contact: <%= district.contact_person %> </span><br/>
+				<span> Phone: <%= district.contact_phone %> </span><br/>
+				<span> Email: <%= district.contact_email %> </span><br/>	
+			</p>
+			<p>
+				<span class='quiet'><small> created: <%= time_ago_in_words(district.created_at) %> ago </small></span><br/>
+				<span class='quiet'><small> updated: <%= time_ago_in_words(district.updated_at) %> ago</small></span>
+			</p>
+			<div class="actions">
+				<%=link_to 'Edit', edit_district_path(district) %>
+			</div>
+		</div>
+	</div>
+	<hr/>
+

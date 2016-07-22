@@ -11,7 +11,7 @@
 
       
       <%= f.label :find_your_school_district %>
-      <%= district_list = all_districts.map { |district| [district.title, district.id]} %>
+      <!-- <%= district_list = all_districts.map { |district| [district.title, district.id]} %> -->
       <%= f.select :district_id, options_for_select(district_list,
         selected: @user.district_id), {} %>
 
@@ -20,9 +20,7 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-<!--       <%= f.submit "Create my account", class: "btn btn-primary" %>
- -->      
+    
       <%= f.submit(@user.new_record? ? 'Sign-Up' : 'Edit profile', class: "btn btn-success") %>
     <% end %>
   </div>

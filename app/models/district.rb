@@ -9,7 +9,5 @@ class District < ActiveRecord::Base
 	validates :contact_phone, presence: true, length: {minimum: 10, maximum: 10 }
 	validates :contact_person, presence: true, length: { minimum: 3, maximum: 50 }
 
-	enum title: []
-
 end
 

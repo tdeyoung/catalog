@@ -9,6 +9,12 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
+      
+      <%= f.label :find_your_school_district %>
+      <%= district_list = all_districts.map { |district| [district.title, district.id]} %>
+      <%= f.select :district_id, options_for_select(district_list,
+        selected: @user.district_id), {} %>
+
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 

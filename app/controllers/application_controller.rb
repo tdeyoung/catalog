@@ -16,7 +16,14 @@ class ApplicationController < ActionController::Base
   def required_user
     if !logged_in?
       flash[:danger] = "You must be logged in to perform that action"
-      redirect_to :back
+      redirect_to root_path
+    end
+  end
+
+  def require_district
+    if logged_in? and current_user.district_id == 0
+      flash[:danger] = "You must set up your school district before using this site"
+      redirect_to new_district_path
     end
   end
 

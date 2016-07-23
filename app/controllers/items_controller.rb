@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_ensembles
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :all_items, only: [:index, :create, :destroy, :update]
+  before_action :required_user
+  before_action :require_district
 
 def all_items
   @items = Item.all

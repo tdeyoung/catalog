@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
 
   def show
+    if @user.district_id == 0
+      @user.district_id = current_district.id
+    end
   end
 
  # GET /users

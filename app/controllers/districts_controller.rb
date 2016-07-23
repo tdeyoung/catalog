@@ -1,7 +1,5 @@
 class DistrictsController < ApplicationController
   before_action :set_district, only: [:show, :edit, :update, :destroy]
-  #before_action :all_districts, only: [:create, :update]
-
 
 
   # GET /districts
@@ -28,9 +26,11 @@ class DistrictsController < ApplicationController
   # POST /districts.json
   def create
     @district = District.new(district_params)
+
     respond_to do |format|
       if @district.save
-        current_user.district_id = @district.id
+        current_user.update(district_id: @district.id, admin: true)
+        flash[:success] = "Current district id is:  #{@district.id}"
         format.html { redirect_to @district, notice: 'District was successfully created.' }
         format.json { render :show, status: :created, location: @district }
 
@@ -63,6 +63,11 @@ class DistrictsController < ApplicationController
       format.html { redirect_to districts_url, notice: 'District was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def set_user_district
+    
   end
 
   private

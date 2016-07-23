@@ -1,3 +1,8 @@
+<% if @message %>
+	alert(<%=j @message %>);
+<% end %>
+
+
 $('#item-form').html("<%= j (render 'form') %>");
 $('#item-form').slideDown(350);
 setTimeout(function(){

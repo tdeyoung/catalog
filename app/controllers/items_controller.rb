@@ -6,10 +6,11 @@ class ItemsController < ApplicationController
   before_action :all_items, only: [:index, :create, :destroy, :update]
   before_action :required_user
   before_action :require_district
+  before_action :require_same_user, only: [:edit, :update]
 
-def all_items
-  @items = Item.all
-end
+  def all_items
+    @items = Item.all
+  end
 
   # GET /items
   # GET /items.json
@@ -51,8 +52,11 @@ end
          end
      else
          @item = Item.new(item_params)
+         @item.user_id = current_user.id
+         @item.district_id = current_user.district_id
          if @item.save
-             @current_item = @item
+          flash[:success] = "Item id number is: #{@item.id}, Item user #{@item.user_id} and item district #{@item.district_id}"
+          @current_item = @item
          else
              respond_to do |format|
                  format.js { render action: 'new' }
@@ -92,6 +96,13 @@ end
 
     def set_ensembles
       @ensembles = Item.ensembles
+    end
+
+    def require_same_user
+      if current_user != @item.user
+        #TODO flash alert saying you cannot edit some one else's entry
+        redirect_to items_path
+      end
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

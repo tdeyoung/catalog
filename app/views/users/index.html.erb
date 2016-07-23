@@ -4,32 +4,31 @@
 
 <h1>Users</h1>
 
-<span class="new_btn">
-   <%= link_to 'New User', new_user_path, class: "btn btn-danger" %>
-</span>
-
 <div class="row">
 	<div class="cold-md-4 cold-md-offset-4 center">
 		<%= will_paginate %>
 	</div>
 </div>
 <% @users.each do |user| %>
-<div class="row">
-	<div class="col-lg-6 well">
-  <h4> <%= user.name %> </h4>
-  <span class="email"> <%= user.email %> </span>
-    <div class="actions">
-      <% if has_district?(user) %>
-      <%= link_to 'Show', user %>
-      <% end %>
+<% if display_user?(user) %>
 
+  <div class="row">
+	 <div class="col-lg-6 well">
+    <h4> <%= user.name %> </h4>
+    <span class="email"> <%= user.email %> </span>
+      <div class="actions">
+        <% if has_district?(user) %>
+        <%= link_to 'Show', user %>
+      <% end %>
+  
 
 <!--       <%= link_to 'Edit', edit_user_path(user) %>
  --><!--   <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
  -->  </div>
- 		</div>
+ 	  </div>
   </div>
-  <% end %>
+<% end %>
+<% end %>
 
   <div class="row">
 	<div class="cold-md-4 cold-md-offset-4 center">

@@ -11,9 +11,7 @@
 
       
       <%= f.label :find_your_school_district %>
-      <!-- <%= district_list = all_districts.map { |district| [district.title, district.id]} %> -->
-      <!-- <%= district_list.push ("*Create a new district") %> -->
-      <%= f.select :district_id, options_for_select(district_list, 
+      <%= f.select :district_id, options_for_select(set_district, 
         selected: @user.district_id), {} %>
 
       <%= f.label :password %>

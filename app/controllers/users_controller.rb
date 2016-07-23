@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_same_user, only: [:edit, :update]
 
 
   def show
@@ -24,13 +25,13 @@ class UsersController < ApplicationController
   		flash[:success] = "Your account has been created succesfully"
       session[:user_id] = @user.id  		
   	else
-  		render 'new'
+  		render 'new' and return
   	end
 
     if @user.district_id == 0
-      redirect_to new_district_path
+      redirect_to new_district_path and return
     else
-      redirect_to user_path
+      redirect_to user_path(@user.id)
     end
   end
 
@@ -43,6 +44,8 @@ class UsersController < ApplicationController
   end
 end
 
+
+
   private
 
   	def user_params
@@ -53,5 +56,11 @@ end
       @user = User.find(params[:id])
     end
 
+    def require_same_user
+      if current_user != @user
+        flash[:danger] = "You can only edit your own profile"
+        redirect_to :back
+      end 
+    end
 
 end

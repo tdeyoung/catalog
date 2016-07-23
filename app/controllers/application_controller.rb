@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :current_district, :all_districts
+  helper_method :current_user, :logged_in?, :current_district, :all_districts, :set_district
 
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -26,6 +26,11 @@ class ApplicationController < ActionController::Base
 
   def all_districts
     @districts = District.all.order('title ASC')
+  end
+
+  def set_district
+    district_list = all_districts.map { |district| [district.title, district.id]}
+    district_list.push ("*Create a new district")
   end
 
 end

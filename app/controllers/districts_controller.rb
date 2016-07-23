@@ -28,11 +28,12 @@ class DistrictsController < ApplicationController
   # POST /districts.json
   def create
     @district = District.new(district_params)
-
     respond_to do |format|
       if @district.save
+        current_user.district_id = @district.id
         format.html { redirect_to @district, notice: 'District was successfully created.' }
         format.json { render :show, status: :created, location: @district }
+
       else
         format.html { render :new }
         format.json { render json: @district.errors, status: :unprocessable_entity }

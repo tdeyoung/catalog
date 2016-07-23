@@ -13,7 +13,12 @@
           <div id: "logo">
           <%= link_to "ScoreShare", root_path, id: "logo" %>
           </div>
-
+                  
+          <% if logged_in? and has_district?(current_user) %>
+            <span class="panel">
+              <%= current_user.district.title %>
+            </span>
+          <% end %>
 
 
         </div> <!-- end div class="navbar-header" -->

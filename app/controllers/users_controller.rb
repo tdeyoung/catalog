@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :require_same_user, only: [:edit, :update]
-  before_action :require_district, except: [:create, :edit, :show]
+  before_action :require_district, except: [:create, :edit, :update]
 
 
   def show
-    if @user.district_id == 0
-      @user.district_id = current_district.id
-    end
   end
 
  # GET /users

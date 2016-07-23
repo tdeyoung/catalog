@@ -19,7 +19,9 @@
   <h4> <%= user.name %> </h4>
   <span class="email"> <%= user.email %> </span>
     <div class="actions">
+      <% if has_district?(user) %>
       <%= link_to 'Show', user %>
+      <% end %>
 
 
 <!--       <%= link_to 'Edit', edit_user_path(user) %>

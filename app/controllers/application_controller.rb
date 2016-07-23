@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def all_districts
-    @districts = District.all
+    @districts = District.all.order('title ASC')
   end
 
 end

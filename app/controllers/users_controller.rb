@@ -19,14 +19,21 @@ class UsersController < ApplicationController
   end
   
   def create
-  	@user = User.new(user_params)
+
+    #binding pry
+    @user = User.new(user_params)
   	if @user.save
   		flash[:success] = "Your account has been created succesfully"
-      session[:user_id] = @user.id
-  		redirect_to items_path
+      session[:user_id] = @user.id  		
   	else
   		render 'new'
   	end
+
+    if @user.district_id == 0
+      redirect_to new_district_path
+    else
+      redirect_to user_path
+    end
   end
 
   def update

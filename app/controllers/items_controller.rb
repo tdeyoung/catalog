@@ -16,9 +16,6 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.order("title ASC").paginate(page: params[:page]).per_page(4)
-    if display_item?(@item)
-      return
-    end
   end
 
   #GET /results

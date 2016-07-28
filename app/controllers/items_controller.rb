@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   before_action :required_user
   before_action :require_district
   before_action :require_same_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
+  
 
   def all_items
     @items = Item.all
@@ -15,7 +17,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.order("title ASC").paginate(page: params[:page]).per_page(4)
+      @items = Item.order("title ASC").paginate(page: params[:page]).per_page(4)
   end
 
   #GET /results
@@ -30,6 +32,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+
   end
 
   # GET /items/new
@@ -83,7 +86,10 @@ class ItemsController < ApplicationController
   # DELETE /items/1.json
 
   def destroy
+    #binding pry
     @item.destroy!
+    flash[:success] = "Item Deleted"
+    redirect_to items_path
   end
   
   private
@@ -97,11 +103,22 @@ class ItemsController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @item.user
-        #TODO flash alert saying you cannot edit some one else's entry
+      if current_user != @item.user and !current_user.admin?
+        flash[:danger] = "You can only edit your own items"
         redirect_to items_path
       end
     end
+
+    def admin_user
+      redirect to items_path unless current_user.admin?
+    end
+
+    def if_same_district?
+      @items = Item.all 
+      if @item.district_id == current_district.id
+        true
+    end
+  end
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params

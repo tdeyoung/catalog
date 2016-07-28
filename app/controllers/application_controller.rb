@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_district
-    current_user.district.title
+    current_user.district
   end
 
   def all_districts
@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
   end
 
   def display_item?(item)
-    if item.district_id == current_user.district_id
+    if @item.district == current_district
       true
     end
   end
@@ -58,5 +58,6 @@ class ApplicationController < ActionController::Base
       true
     end
   end
+
 
 end

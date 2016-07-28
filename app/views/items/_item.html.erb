@@ -17,7 +17,12 @@
 				<span class='quiet'><small> updated: <%= time_ago_in_words(item.updated_at) %> ago</small></span>
 			</p>
 			<div class="actions">
+				<% if item.user == current_user || current_user.admin? %>
 				<%=link_to 'Edit', edit_item_path(item), remote: true %>
+				<% end %>
+				<% if logged_in? and current_user.admin? %>
+					<%= link_to "[Delete Item]", item_path(item), method: :delete, data: { confirm: "Are you sure?" } %>
+				<% end %>
 			</div>
 		</div>
 	</div>

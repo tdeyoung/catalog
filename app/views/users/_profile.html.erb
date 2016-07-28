@@ -10,9 +10,10 @@
       <%= f.label :school_district %>
       <%= f.text_field :district,  class: 'form-control' %>
 -->
-
+      <% if current_user.admin? %>
       <%= f.label :admin %>
       <%= f.check_box :admin, class: 'checkbox' %>
+      <% end %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>

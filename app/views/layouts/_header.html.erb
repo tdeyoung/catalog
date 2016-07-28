@@ -16,7 +16,7 @@
                   
           <% if logged_in? and has_district?(current_user) %>
             <span class="panel">
-              <%= current_user.district.title %>
+              <%= current_district.title %>
             </span>
           <% end %>
 

@@ -9,9 +9,8 @@
 		<%= will_paginate %>
 	</div>
 </div>
-<% @users.each do |user| %>
-<% if display_user?(user) %>
 
+<% @users.each do |user| if display_user?(user) %>
   <div class="row">
 	 <div class="col-lg-6 well">
     <h4> <%= user.name %> </h4>

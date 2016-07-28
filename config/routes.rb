@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :districts
   resources :items
-  resources :users
+  resources :users, except: [:destroy]
   
   root                     'static_pages#home'
 

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :require_district, except: [:create, :edit, :update]
 
 
+
   def show
   end
 
@@ -58,10 +59,12 @@ end
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user and !current_user.admin?
         flash[:danger] = "You can only edit your own profile"
         redirect_to :back
       end 
     end
+
+
 
 end

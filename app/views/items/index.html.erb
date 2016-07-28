@@ -8,6 +8,12 @@
 
 <h1>Music List</h1>
 
+<%= form_tag search_items_path, :method => :get do %>
+<p>
+	<%= text_field_tag :query, params[:query] %> <%= submit_tag "Search!" %>
+</p>
+<% end %>
+
 
 			<%= will_paginate %>
       

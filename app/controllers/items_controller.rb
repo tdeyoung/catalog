@@ -20,6 +20,21 @@ class ItemsController < ApplicationController
       @items = Item.order("title ASC").paginate(page: params[:page]).per_page(4)
   end
 
+  #GET /items/search
+  #GET /items/search.xml
+  def search
+    @items = Item.search do
+      keywords params[:query]
+
+      paginate :page => params[:page], :per_page => 4
+    end.results
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.xml  { render :xml => @items }
+    end
+  end
+
   #GET /results
   def results
     if params[:search]

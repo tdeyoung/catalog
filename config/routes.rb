@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
   resources :districts
-  resources :items
+  resources :items do
+    collection do
+      get :search
+    end
+  end
   resources :users, except: [:destroy]
   
   root                     'static_pages#home'
@@ -15,5 +19,6 @@ Rails.application.routes.draw do
   get '/login', to: "logins#new"
   post '/login', to: "logins#create"
   get '/logout', to: "logins#destroy"
+
 
 end

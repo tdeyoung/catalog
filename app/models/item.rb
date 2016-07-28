@@ -7,14 +7,18 @@ class Item < ActiveRecord::Base
 
 	enum ensemble: [:band, :choir, :general_music, :orchestra, :other]
 
-	def self.search(search)
-	  where('title LIKE :search OR composer_name LIKE :search', search: "%#{search}")
+	searchable do 
+		text :title, :composer_name, :arranger, :publisher, :level, :location
 
-	  #where("title LIKE ?", "%#{search}%") 
-	  #where("composer_name LIKE ?", "%#{search}%")
-	  #where("ensemble LIKE ?", "%#{search}%")
-	  #where("location LIKE ?", "%#{search}%")
-	end
+		integer :ensemble
+		integer :status
+		integer :user_id
+		integer :district_id
+
+		string :sort_title do
+			title.downcase.gsub(/^(an?|the)/, '')
+		end
+	end	
 end
 
 

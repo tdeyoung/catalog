@@ -10,4 +10,9 @@
 </p>
 <% end %>
 
+<%= form_tag(search_items_path, :method => :get do, id: "search-form") do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search for a title or composer", autofocus: true %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
 </div>

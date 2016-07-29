@@ -6,11 +6,16 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :users, except: [:destroy]
+
+  resources :users, except: [:destroy] do
+    collection do
+      get :search
+    end
+  end
   
   root                     'static_pages#home'
 
-  get 'search'          => 'items#search'
+  #get 'search'          => 'items#search'
   get 'results'         => 'items#results'
   get 'help'            => 'static_pages#help'
   get 'about'           => 'static_pages#about'

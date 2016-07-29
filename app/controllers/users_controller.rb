@@ -11,9 +11,15 @@ class UsersController < ApplicationController
  # GET /users
   # GET /users.json
   def index
-    @users = User.order("name ASC").paginate(page: params[:page], per_page: 4)
+    @users = User.search do
+      with :district_id, current_district.id
+      paginate :page => params[:page], :per_page => 4
+    end.results
+
+    #@users = User.order("name ASC").paginate(page: params[:page], per_page: 4)
   end
   
+
   def new
   	@user = User.new
   end

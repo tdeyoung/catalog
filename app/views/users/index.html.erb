@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<% @users.each do |user| if display_user?(user) %>
+<% @users.each do |user| %>
   <div class="row">
 	 <div class="col-lg-6 well">
     <h4> <%= user.name %> </h4>
@@ -26,7 +26,6 @@
  -->  </div>
  	  </div>
   </div>
-<% end %>
 <% end %>
 
   <div class="row">

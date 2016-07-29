@@ -17,7 +17,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-      @items = Item.order("title ASC").paginate(page: params[:page]).per_page(4)
+    @items = Item.search do
+      with :district_id, current_district.id
+      order_by :sort_title, :asc
+      paginate :page => params[:page], :per_page => 4
+    end.results
   end
 
   #GET /items/search
@@ -25,7 +29,8 @@ class ItemsController < ApplicationController
   def search
     @items = Item.search do
       keywords params[:query]
-
+      with :district_id, current_district.id
+      order_by :sort_title, :asc
       paginate :page => params[:page], :per_page => 4
     end.results
 

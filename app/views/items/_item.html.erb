@@ -10,7 +10,8 @@
 			<p>
 				<span> Composer: <%= item.composer_name %> </span><br/>
 				<span> Ensemble: <%= item.ensemble %> </span><br/>
-				<span> Location: <%= item.location %> </span><br/>			
+				<span> Location: <%= item.location %> </span><br/>
+				<span> District: <%= item.district.title %> </span><br/>			
 			</p>
 			<p>
 				<span class='quiet'><small> created: <%= time_ago_in_words(item.created_at) %> ago </small></span><br/>

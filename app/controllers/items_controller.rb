@@ -132,16 +132,11 @@ class ItemsController < ApplicationController
     def admin_user
       redirect to items_path unless current_user.admin?
     end
-
-    def if_same_district?
-      @items = Item.all 
-      if @item.district_id == current_district.id
-        true
-    end
-  end
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :composer_name, :arranger, :publisher, :ensemble, :level, :location, :comments)
+      params.require(:item).permit(:title, :composer_name, :arranger, :publisher, :ensemble,
+      :level, :location, :comments, :status, :user_id, :district_id)
     end
 end
+

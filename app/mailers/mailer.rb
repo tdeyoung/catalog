@@ -1,4 +1,4 @@
-class Mailer < ApplicationMailer
+class Mailer < ApplicationMailer::Base
 	default from: "musiccatalogdev@gmail.com"
 
 	def sample_email(user)

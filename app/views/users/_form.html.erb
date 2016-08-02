@@ -9,7 +9,6 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      
       <%= f.label :find_your_school_district %>
       <%= f.select :district_id, options_for_select(set_district, 
         selected: @user.district_id), {} %>
@@ -20,7 +19,10 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     
-      <%= f.submit(@user.new_record? ? 'Sign-Up' : 'Edit profile', class: "btn btn-success") %>
+      <%= f.submit(@user.new_record? ? 'Sign-Up' : 'Edit profile', class: "btn btn-success") %></br>
+    </hr>
+
+      <h4><strong>You will recieve a welcome email from: musiccatalogdev@gmail.com.</strong></h4>
     <% end %>
   </div>
 </div>

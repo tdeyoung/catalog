@@ -30,6 +30,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
   	if @user.save
+
+      # Sends email to user when user is created
+      Mailer.sample_email(@user).deliver
+      
   		flash[:success] = "Your account has been created succesfully"
       session[:user_id] = @user.id  		
   	else
